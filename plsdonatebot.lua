@@ -12,18 +12,17 @@ if not url then
 end
 
 local local_player = game:GetService("Players").LocalPlayer
-task.spawn(function()
-    local data = {
-        ["content"] = "👍 " .. local_player.Name,
-    }
+local data = {
+    ["content"] = "👍 " .. local_player.Name,
+}
 
-    local newdata = game:GetService("HttpService"):JSONEncode(data)
-    local headers = {
-        ["content-type"] = "application/json"
-    }
+local newdata = game:GetService("HttpService"):JSONEncode(data)
+local headers = {
+    ["content-type"] = "application/json"
+}
 
-    request = http_request or request or HttpPost or syn.request
-    local abcdef = {Url = url, Body = newdata, Method = "POST", Headers = headers}
+request = http_request or request or HttpPost or syn.request
+local abcdef = {Url = url, Body = newdata, Method = "POST", Headers = headers}
+while task.wait(10) do
     request(abcdef)
-    task.wait(30)
-end)
+end
